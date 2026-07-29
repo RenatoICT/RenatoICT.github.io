@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RenatoICT — 価格重視のトレーディング教育</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=EB+Garamond:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0a0a;
+    --bg-alt:#050505;
+    --gold:#c9a85c;
+    --gold-bright:#e8c778;
+    --text-main:#f2ede1;
+    --text-muted:#8a8378;
+    --grey-line:#232019;
+    --serif: 'Noto Serif JP', 'EB Garamond', serif;
+    --sans: 'Zen Kaku Gothic New', sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text-main);
+    font-family:var(--sans);
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none;}
+  img,svg{display:block;max-width:100%;}
+
+  .section-tag{
+    font-size:0.75rem;
+    letter-spacing:0.25em;
+    color:var(--gold);
+    text-transform:uppercase;
+    margin-bottom:20px;
+    font-family:var(--sans);
+  }
+
+  /* ── NAV ── */
+  nav{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:24px 60px;
+    background:rgba(10,10,10,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--grey-line);
+  }
+  .logo{font-family:var(--serif); font-size:1.3rem; letter-spacing:0.1em; color:var(--text-main);}
+  .logo span{color:var(--gold);}
+  nav a.cta-small{
+    border:1px solid var(--gold); color:var(--gold);
+    padding:10px 26px; font-size:0.8rem; letter-spacing:0.1em;
+    transition:all .3s ease;
+  }
+  nav a.cta-small:hover{background:var(--gold); color:#0a0a0a;}
+
+  /* ── HERO ── */
+  header.hero{
+    min-height:100vh;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center;
+    padding:160px 40px 100px;
+    position:relative;
+    overflow:hidden;
+    background:
+      radial-gradient(ellipse 60% 50% at 50% 20%, rgba(201,168,92,0.08), transparent 70%),
+      var(--bg);
+  }
+  header.hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      linear-gradient(rgba(201,168,92,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,168,92,0.035) 1px, transparent 1px);
+    background-size:64px 64px;
+    mask-image:radial-gradient(ellipse 70% 60% at 50% 30%, black, transparent 75%);
+    pointer-events:none;
+  }
+  .hero-eyebrow{
+    font-size:0.8rem; letter-spacing:0.35em; color:var(--gold);
+    text-transform:uppercase; margin-bottom:28px;
+  }
+  h1.hero-title{
+    font-family:var(--serif); font-weight:300;
+    font-size:clamp(2.4rem, 6vw, 4.6rem);
+    line-height:1.3;
+    max-width:900px;
+    color:var(--text-main);
+  }
+  h1.hero-title em{
+    font-style:normal; color:var(--gold-bright);
+  }
+  .hero-sub{
+    margin-top:28px; max-width:620px; color:var(--text-muted);
+    font-size:1.05rem; font-weight:300;
+  }
+  .hero-ctas{ margin-top:48px; display:flex; gap:20px; flex-wrap:wrap; justify-content:center; }
+  .btn-primary, .btn-ghost{
+    padding:16px 40px; font-size:0.9rem; letter-spacing:0.08em;
+    border-radius:2px; transition:all .3s ease; cursor:pointer;
+  }
+  .btn-primary{ background:var(--gold); color:#0a0a0a; font-weight:600; }
+  .btn-primary:hover{ background:var(--gold-bright); transform:translateY(-2px); }
+  .btn-ghost{ border:1px solid var(--grey-line); color:var(--text-muted); }
+  .btn-ghost:hover{ border-color:var(--gold); color:var(--gold); }
+
+  .hero-assets{
+    margin-top:70px; display:flex; gap:40px; flex-wrap:wrap; justify-content:center;
+    font-family:var(--serif); font-style:italic; color:var(--text-muted); font-size:0.95rem;
+    letter-spacing:0.05em;
+  }
+  .hero-assets span{ color:var(--gold); font-style:normal; margin-right:6px; }
+
+  /* ── SECTION GENERIC ── */
+  section{ padding:130px 60px; }
+  .section-inner{ max-width:1100px; margin:0 auto; }
+  h2.section-title{
+    font-family:var(--serif); font-weight:300; font-size:clamp(1.9rem,4vw,2.8rem);
+    max-width:700px; margin-bottom:24px;
+  }
+  .section-desc{ color:var(--text-muted); max-width:560px; font-weight:300; }
+
+  /* ── CURRICULUM ── */
+  .curriculum-grid{
+    margin-top:70px; display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:1px; background:var(--grey-line); border:1px solid var(--grey-line);
+  }
+  .curriculum-item{
+    background:var(--bg); padding:36px 30px;
+  }
+  .curriculum-num{ font-family:var(--serif); font-style:italic; color:var(--gold); font-size:0.9rem; }
+  .curriculum-item h3{ font-family:var(--serif); font-weight:400; font-size:1.15rem; margin:14px 0 10px; }
+  .curriculum-item p{ color:var(--text-muted); font-size:0.88rem; font-weight:300; }
+
+  /* ── PRICING ── */
+  #precios{ background:var(--bg-alt); border-top:1px solid var(--grey-line); border-bottom:1px solid var(--grey-line); }
+  .plans{
+    margin-top:70px; display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:28px;
+  }
+  .plan-card{
+    border:1px solid var(--grey-line); padding:44px 34px; position:relative;
+    display:flex; flex-direction:column; transition:border-color .3s ease;
+  }
+  .plan-card:hover{ border-color:var(--gold); }
+  .plan-card.featured{ border-color:var(--gold); background:linear-gradient(180deg, rgba(201,168,92,0.06), transparent 40%); }
+  .plan-badge{
+    position:absolute; top:-1px; right:-1px;
+    background:var(--gold); color:#0a0a0a; font-size:0.68rem; letter-spacing:0.1em;
+    padding:6px 16px; font-weight:700;
+  }
+  .plan-name{ font-family:var(--serif); font-size:1.5rem; font-weight:400; margin-bottom:6px; }
+  .plan-name-jp{ color:var(--text-muted); font-size:0.8rem; letter-spacing:0.15em; margin-bottom:28px; }
+  .plan-price{ font-family:var(--serif); font-size:2.3rem; color:var(--gold-bright); font-weight:300; }
+  .plan-price small{ font-size:0.95rem; color:var(--text-muted); font-family:var(--sans); }
+  .plan-price-note{ color:var(--text-muted); font-size:0.78rem; margin-top:6px; margin-bottom:30px; }
+  .plan-features{ list-style:none; flex:1; margin-bottom:34px; }
+  .plan-features li{
+    padding:11px 0; border-top:1px solid var(--grey-line); font-size:0.88rem; color:var(--text-main);
+    display:flex; gap:10px; font-weight:300;
+  }
+  .plan-features li::before{ content:"—"; color:var(--gold); flex-shrink:0; }
+  .plan-cta{
+    display:block; text-align:center; padding:15px; border:1px solid var(--gold); color:var(--gold);
+    font-size:0.85rem; letter-spacing:0.08em; transition:all .3s ease;
+  }
+  .plan-cta:hover{ background:var(--gold); color:#0a0a0a; }
+  .plan-card.featured .plan-cta{ background:var(--gold); color:#0a0a0a; }
+  .plan-card.featured .plan-cta:hover{ background:var(--gold-bright); }
+
+  /* Pasos de compra (el pago ocurre dentro de Discord) */
+  .buy-steps{
+    margin-top:44px; padding:28px 30px;
+    border:1px solid var(--grey-line);
+    background:rgba(201,168,92,0.04);
+  }
+  .buy-steps-lead{
+    font-family:var(--serif); font-size:1.05rem; color:var(--gold-bright);
+    margin-bottom:20px;
+  }
+  .buy-steps-list{
+    list-style:none; display:flex; flex-wrap:wrap; gap:14px 34px;
+  }
+  .buy-steps-list li{
+    display:flex; align-items:center; gap:11px;
+    color:var(--text-main); font-size:0.88rem; font-weight:300;
+  }
+  .buy-steps-list li span{
+    flex-shrink:0;
+    width:24px; height:24px; border-radius:50%;
+    border:1px solid var(--gold); color:var(--gold);
+    display:flex; align-items:center; justify-content:center;
+    font-size:0.72rem; font-family:var(--serif);
+  }
+  .buy-steps-list code{
+    font-family:ui-monospace, SFMono-Regular, Menlo, monospace;
+    background:rgba(201,168,92,0.12); color:var(--gold-bright);
+    padding:2px 7px; border-radius:2px; font-size:0.85em;
+  }
+
+  .pricing-note{
+    margin-top:40px; padding:24px 28px; border-left:2px solid var(--gold);
+    background:rgba(201,168,92,0.04); color:var(--text-muted); font-size:0.85rem; max-width:800px;
+    font-weight:300;
+  }
+  .pricing-note strong{ color:var(--text-main); font-weight:500; }
+
+  /* ── PREMIUM DETAIL ── */
+  .premium-grid{
+    margin-top:60px; display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1px;
+    background:var(--grey-line); border:1px solid var(--grey-line);
+  }
+  .premium-item{ background:var(--bg); padding:32px 26px; }
+  .premium-item h4{ font-family:var(--serif); font-weight:400; font-size:1.05rem; margin-bottom:10px; color:var(--gold-bright); }
+  .premium-item p{ color:var(--text-muted); font-size:0.85rem; font-weight:300; }
+
+  /* ── FOOTER ── */
+  footer{
+    background:var(--bg-alt); border-top:1px solid var(--grey-line);
+    padding:70px 60px 40px; text-align:center;
+  }
+  footer .logo{ display:inline-block; margin-bottom:20px; }
+  footer p{ color:var(--text-muted); font-size:0.8rem; }
+  footer .legal-link{ color:var(--gold); font-size:0.8rem; margin-top:14px; display:inline-block; }
+
+  @media (max-width:700px){
+    nav{ padding:18px 24px; }
+    section{ padding:90px 24px; }
+    header.hero{ padding:140px 24px 80px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Renato<span>ICT</span></div>
+  <a href="#precios" class="cta-small">プランを見る</a>
+</nav>
+
+<header class="hero">
+  <div class="hero-eyebrow">Price Action × ICT Concepts</div>
+  <h1 class="hero-title">チャートは、<em>物語</em>を語っている。<br>読み方を学べば、迷わなくなる。</h1>
+  <p class="hero-sub">Forex・Gold・指数。値動きの裏にある機関投資家の意図を、ICT（Inner Circle Trader）の考え方で読み解く、実践重視のプライスアクション講座です。</p>
+  <div class="hero-ctas">
+    <a href="#precios" class="btn-primary">プランと料金を見る</a>
+    <a href="#curriculum" class="btn-ghost">カリキュラムを見る</a>
+  </div>
+  <div class="hero-assets">
+    <div><span>EUR/USD</span>Forex</div>
+    <div><span>USD/JPY</span>Forex</div>
+    <div><span>XAU/USD</span>Gold</div>
+    <div><span>DXY</span>Index</div>
+  </div>
+</header>
+
+<section id="curriculum">
+  <div class="section-inner">
+    <div class="section-tag">Curriculum</div>
+    <h2 class="section-title">全20本の講義動画で、<br>4つのトレーディングモデルを習得する</h2>
+    <p class="section-desc">合計 約25時間43分。基礎となる値動きの読み方から、実際にエントリー根拠として使う4つのモデルまで、順を追って積み上げていきます。</p>
+    <div class="curriculum-grid">
+      <div class="curriculum-item">
+        <div class="curriculum-num">01 — 03</div>
+        <h3>プライスアクションの基礎</h3>
+        <p>相場が動く本当の理由と、構造の読み方を学びます。</p>
+      </div>
+      <div class="curriculum-item">
+        <div class="curriculum-num">04 — 09</div>
+        <h3>ICTコンセプトの核心</h3>
+        <p>機関投資家目線での流動性・不均衡の考え方を掘り下げます。</p>
+      </div>
+      <div class="curriculum-item">
+        <div class="curriculum-num">10 — 17</div>
+        <h3>環境認識と精度の向上</h3>
+        <p>複数の時間足を組み合わせ、判断の精度を高めていきます。</p>
+      </div>
+      <div class="curriculum-item">
+        <div class="curriculum-num">18 — 20</div>
+        <h3>3つのトレーディングモデル</h3>
+        <p>実際にエントリーで使う具体的な手法を習得します。</p>
+      </div>
+      <div class="curriculum-item">
+        <div class="curriculum-num">Premium</div>
+        <h3>+ 4つ目のモデル</h3>
+        <p>プレミアム限定で、より高度な4つ目のモデルを追加で学べます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="precios">
+  <div class="section-inner">
+    <div class="section-tag">Plans</div>
+    <h2 class="section-title">自分のペースに合わせて選べる、<br>3つの受講プラン</h2>
+
+    <div class="plans">
+      <div class="plan-card">
+        <div class="plan-name">Progresivo</div>
+        <div class="plan-name-jp">プログレッシブ</div>
+        <div class="plan-price">¥11,000<small> / 月</small></div>
+        <div class="plan-price-note">6ヶ月間・合計 ¥66,000</div>
+        <ul class="plan-features">
+          <li>毎月3本ずつ動画を解放</li>
+          <li>Renatoへの質問専用チャンネル</li>
+          <li>過去100件以上のQ&amp;Aアーカイブ</li>
+          <li>完了後はプレミアムへの申込資格を取得</li>
+        </ul>
+        <a href="https://discord.gg/cdPtuxVvRb" class="plan-cta" data-plan="progresivo" target="_blank" rel="noopener">Discordで購入する</a>
+      </div>
+
+      <div class="plan-card featured">
+        <div class="plan-badge">人気</div>
+        <div class="plan-name">Completo</div>
+        <div class="plan-name-jp">コンプリート</div>
+        <div class="plan-price">¥55,000</div>
+        <div class="plan-price-note">一括払い・買い切り</div>
+        <ul class="plan-features">
+          <li>全20本の動画に即時アクセス</li>
+          <li>自分のペースで学習</li>
+          <li>Q&amp;Aアーカイブ閲覧（直接質問は含まれません）</li>
+          <li>購入後はプレミアムへの申込資格を取得</li>
+        </ul>
+        <a href="https://discord.gg/cdPtuxVvRb" class="plan-cta" data-plan="completo" target="_blank" rel="noopener">Discordで購入する</a>
+      </div>
+
+      <div class="plan-card">
+        <div class="plan-name">Premium</div>
+        <div class="plan-name-jp">プレミアム</div>
+        <div class="plan-price">¥7,000<small> / 月</small></div>
+        <div class="plan-price-note">8ヶ月間・合計 ¥56,000</div>
+        <ul class="plan-features">
+          <li>Gold・DXY・EURUSD・USDJPY 週次レビュー</li>
+          <li>週1回のライブセッション</li>
+          <li>Renato＋上級生による質問チャンネル</li>
+          <li>トレードアイデア＆実トレード共有チャンネル</li>
+          <li>4つ目のトレーディングモデル</li>
+        </ul>
+        <a href="https://discord.gg/cdPtuxVvRb" class="plan-cta" data-plan="premium" target="_blank" rel="noopener">Discordで購入する</a>
+      </div>
+    </div>
+
+    <div class="buy-steps">
+      <div class="buy-steps-lead">ご購入はDiscord内で行います</div>
+      <ol class="buy-steps-list">
+        <li><span>1</span>サーバーに参加</li>
+        <li><span>2</span><code>/buy</code> コマンドを実行</li>
+        <li><span>3</span>決済完了後、ロールが自動で付与されます</li>
+      </ol>
+    </div>
+
+    <div class="pricing-note">
+      <strong>プレミアムへの申込資格について：</strong>プレミアムにお申し込みいただくには、プログレッシブを最後まで完了しているか、コンプリートをご購入済みであることが条件となります。8回の支払い完了後は、追加のお支払いなしにプレミアム生として継続できます。
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-inner">
+    <div class="section-tag">Premium Details</div>
+    <h2 class="section-title">プレミアムだけの、継続的なサポート環境</h2>
+    <div class="premium-grid">
+      <div class="premium-item">
+        <h4>週次マーケットレビュー</h4>
+        <p>Gold・DXY・EURUSD・USDJPYの4資産を毎週チェック。</p>
+      </div>
+      <div class="premium-item">
+        <h4>週1回のライブセッション</h4>
+        <p>リアルタイムでチャートを見ながら学べます。</p>
+      </div>
+      <div class="premium-item">
+        <h4>質問チャンネル</h4>
+        <p>Renatoと上級生に直接質問できる環境。</p>
+      </div>
+      <div class="premium-item">
+        <h4>トレードアイデア共有</h4>
+        <p>コミュニティ内でアイデアを交換。</p>
+      </div>
+      <div class="premium-item">
+        <h4>実トレード＋解説</h4>
+        <p>実際のトレードとその考え方を共有。</p>
+      </div>
+      <div class="premium-item">
+        <h4>雑談チャンネル</h4>
+        <p>同じ目標を持つ仲間との交流の場。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TOKUSHOHO ── -->
+<section style="background:#050505; padding:80px 60px; border-top:1px solid var(--grey-line);">
+  <div style="max-width:900px; margin:0 auto;">
+    <div class="section-tag">法的表記</div>
+    <h2 style="font-family:var(--serif);font-size:1.8rem;font-weight:300;margin-bottom:8px;">特定商取引法に基づく表記</h2>
+    <p style="font-size:0.78rem;color:var(--text-muted);margin-bottom:40px;letter-spacing:0.05em;">Act on Specified Commercial Transactions</p>
+
+    <table style="width:100%;border-collapse:collapse;font-size:0.85rem;">
+      <tr style="border-bottom:1px solid var(--grey-line);">
+        <td style="padding:18px 16px;color:var(--text-muted);white-space:nowrap;min-width:160px;vertical-align:top;">販売業者</td>
+        <td style="padding:18px 16px;color:var(--text-main);">Luiggi Renato Morote Torres</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--grey-line);">
+        <td style="padding:18px 16px;color:var(--text-muted);vertical-align:top;">お問い合わせ先</td>
+        <td style="padding:18px 16px;color:var(--text-main);">
+          メール：Renato.ict.japan@gmail.com<br>
+          <span style="color:var(--text-muted);font-size:0.8rem;">電話番号は請求があり次第、遅滞なく開示します。</span>
+        </td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--grey-line);">
+        <td style="padding:18px 16px;color:var(--text-muted);vertical-align:top;">販売価格</td>
+        <td style="padding:18px 16px;color:var(--text-main);">
+          プログレッシブプラン：¥11,000／月（最大6ヶ月・合計¥66,000）<br>
+          コンプリートプラン：¥55,000（一括払い）<br>
+          プレミアムコース：¥7,000／月（最大8ヶ月・合計¥56,000）
+        </td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--grey-line);">
+        <td style="padding:18px 16px;color:var(--text-muted);vertical-align:top;">支払い方法</td>
+        <td style="padding:18px 16px;color:var(--text-main);">クレジットカード（Stripe決済）</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--grey-line);">
+        <td style="padding:18px 16px;color:var(--text-muted);vertical-align:top;">支払い時期</td>
+        <td style="padding:18px 16px;color:var(--text-main);">お申し込み時に初回分をお支払い。以降は毎月自動更新。</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--grey-line);">
+        <td style="padding:18px 16px;color:var(--text-muted);vertical-align:top;">提供時期</td>
+        <td style="padding:18px 16px;color:var(--text-main);">お申し込み完了後、Discordサーバーへのアクセス権を速やかに付与します。</td>
+      </tr>
+      <tr>
+        <td style="padding:18px 16px;color:var(--text-muted);vertical-align:top;">返品・キャンセル</td>
+        <td style="padding:18px 16px;color:var(--text-main);">デジタルコンテンツの性質上、提供開始後の返金には対応できません。サブスクリプションは次回請求日の前までにキャンセル可能です。</td>
+      </tr>
+    </table>
+  </div>
+</section>
+
+<footer>
+  <div class="logo">Renato<span>ICT</span></div>
+  <p>© 2026 RenatoICT. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
